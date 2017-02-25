@@ -178,22 +178,6 @@ def fit_line(comment,lines):
     #print(comment,"+++", average_theta,average_theta*180/np.pi , average_rho )
     return [[ eval_line(A,B) ]]
 
-def average_line2(comment,lines):
-    result = []
-
-    if 0 == len(lines): return [[ ]]
-    sum = np.array([0,0,0,0])
-    for theta, rho, x1, x2, y1, y2 in lines:
-  #    print(comment,">>>", theta, theta*180/np.pi, rho ,x1, x2, y1, y2)
-      [x1,y1,x2,y2] = cartesian_line(theta, rho)
-      sum += [x1,y1,x2,y2]
-#    if len(lines) == 0 :
-#      average_theta = 0.0
-#      average_rho   = 0.0
-#    else :
-    average = sum / len(lines)
-#    print(comment,"+++", average_theta,average_theta*180/np.pi , average_rho )
-    return [[ average ]]
 
 
 def original_lines(comment,lines):
@@ -223,24 +207,6 @@ def cartesian_point(theta, rho, y):
   x = ( rho - y*np.sin(theta) ) / np.cos(theta) 
   return [x, y]
 
-
-default_r_lines = []
-def old_if_no_r_line(lines):
-  global default_r_lines
-  if lines == [] :
-    return default_r_lines 
-  else:
-    default_r_lines = lines
-    return lines
-
-default_l_lines = []
-def old_if_no_l_line(lines):
-  global default_l_lines
-  if lines == [] :
-    return default_l_lines 
-  else:
-    default_l_lines = lines
-    return lines
 
 def average_hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
     """
