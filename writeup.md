@@ -1,27 +1,9 @@
 #**Finding Lane Lines on the Road** 
 
-##Writeup Template
-
-###You can use this file as a template for your writeup if you want to submit it as a markdown file. But feel free to use some other method and submit a pdf if you prefer.
-
----
-
-**Finding Lane Lines on the Road**
-
-The goals / steps of this project are the following:
-* Make a pipeline that finds lane lines on the road
-* Reflect on your work in a written report
-
-
-[//]: # (Image References)
-
-[image1]: ./examples/grayscale.jpg "Grayscale"
-
----
 
 ### Reflection
 
-###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+###1. Describe pipeline.
 My pipeline is as follows:
  1. convert image to gray scale 
  2. get canny image
@@ -39,17 +21,16 @@ My pipeline is as follows:
      - Hough edges as cyan lines.
  
 
-
 ###2. Identify potential shortcomings with your current pipeline
 
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
-
+One potential shortcoming would be cannot do average for short edges. Because short edges are almost horinoztal, I ignored these lines. But, these lines could be included.
+Another shortcoming could be in hough-detected-edge. Maybe I would be wrong for hough-transform parameters.
+Short lines are not detected by hough-transform.
 
 ###3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be for averaging lines.
+I guess the short line segements are not good to be averaged. 
+If applying line fitting algorithmss, It would be better. 
+Line or curve fitting is possible.
 
-Another potential improvement could be to ...
