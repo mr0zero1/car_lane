@@ -22,14 +22,22 @@ The goals / steps of this project are the following:
 ### Reflection
 
 ###1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
+My pipeline is as follows:
+ 1. convert image to gray scale 
+ 2. get canny image
+ 3. get hough transformed edges 
+ 4. filter out invalid lines as follows: 
+     - Remove short invalid lines because extrapolation is wrong for these for lines. 
+       (ex. short line to extrapolates horinoztal lines)
+ 5. average lines
+     - To average lines, all cartesian space lines converted to hough(theta,rho) space point.
+     - average in hough space
+ 6. Extrapolate lines
+     - convert hough space point (averaged) into cartesian space.
+ 7. draw lines
+     - extrapolated lines as red line.
+     - Hough edges as cyan lines.
+ 
 
 
 ###2. Identify potential shortcomings with your current pipeline
